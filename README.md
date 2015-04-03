@@ -6,7 +6,6 @@ Python module to allow dotted notation in a dict.
 Example
 -------
 
-.. code-block:: python
 
     # coding: utf-8
     from dicto.dicto import dicto

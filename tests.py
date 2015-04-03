@@ -4,18 +4,20 @@ import unittest
 
 from dicto import dicto
 
+
 class DictoTest(unittest.TestCase):
+
     def setUp(self):
 
         # make normal dict
         self.value = {
-            'one' : 1,
-            'two' : 2,
-            'hello' : 'world',
-            'tlist' : [1, 2, 3],
-            'tdict' : {
-                '1' : 'one',
-                '2' : 'two',
+            'one': 1,
+            'two': 2,
+            'hello': 'world',
+            'tlist': [1, 2, 3],
+            'tdict': {
+                '1': 'one',
+                '2': 'two',
             }
         }
 
@@ -25,7 +27,7 @@ class DictoTest(unittest.TestCase):
         self.d1.two = 2
         self.d1.hello = 'world'
         self.d1.tlist = list([1, 2, 3])
-        self.d1.tdict = dict({'1':'one','2':'two'})
+        self.d1.tdict = dict({'1': 'one', '2': 'two'})
 
         # make dicto 2 with dict
         self.d2 = dicto(self.value)
@@ -55,5 +57,19 @@ class DictoTest(unittest.TestCase):
         self.assertEqual(self.value, self.d2)
 
 
-if __name__ == "__main__":
-    unittest.main()
+if __name__ == '__main__':
+    import sys
+
+    suite = unittest.TestSuite()
+
+    if len(sys.argv) == 1:
+        suite = unittest.TestLoader().loadTestsFromTestCase(
+            DictoTest
+        )
+    else:
+        for test_name in sys.argv[1:]:
+            suite.addTest(
+                DictoTest(test_name)
+            )
+
+    unittest.TextTestRunner(verbosity=2).run(suite)

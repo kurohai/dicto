@@ -21,7 +21,7 @@ class DictoTest(unittest.TestCase):
             }
         }
 
-        # make dicto 1 manually
+        # make dicto 1 using attributes
         self.d1 = dicto()
         self.d1.one = 1
         self.d1.two = 2
@@ -29,28 +29,30 @@ class DictoTest(unittest.TestCase):
         self.d1.tlist = list([1, 2, 3])
         self.d1.tdict = dict({'1': 'one', '2': 'two'})
 
-        # make dicto 2 with dict
+        # make dicto 2 using dict
         self.d2 = dicto(self.value)
 
-    def test_int_one(self):
+    def test_int_one_from_attribute(self):
         self.assertEqual(1, self.d1.one)
         self.assertEqual(1, self.d1['one'])
         self.assertEqual(self.d1.one, self.d1['one'])
 
+    def test_int_one_from_dict(self):
         self.assertEqual(1, self.d2.one)
         self.assertEqual(1, self.d2['one'])
         self.assertEqual(self.d2.one, self.d2['one'])
 
-    def test_int_two(self):
+    def test_int_two_from_attribute(self):
         self.assertEqual(2, self.d1.two)
         self.assertEqual(2, self.d1['two'])
         self.assertEqual(self.d1.two, self.d1['two'])
 
+    def test_int_two_from_dict(self):
         self.assertEqual(2, self.d2.two)
         self.assertEqual(2, self.d2['two'])
         self.assertEqual(self.d2.two, self.d2['two'])
 
-    def test_compare_dict_to_dicto_from_attributes(self):
+    def test_compare_dict_to_dicto_from_attribute(self):
         self.assertEqual(self.value, self.d1)
 
     def test_compare_dict_to_dicto_from_dict(self):

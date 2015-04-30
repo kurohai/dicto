@@ -8,7 +8,7 @@ Example
 
 
     # coding: utf-8
-    from dicto.dicto import dicto
+    from dicto import dicto
 
     mydict = {'a': 1}
     mydicto = dicto(mydict)
